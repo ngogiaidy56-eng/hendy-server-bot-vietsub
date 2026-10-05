@@ -1,0 +1,21 @@
+{
+  "productName": "Hendy Vietsub Studio",
+  "version": "3.4.2",
+  "identifier": "vn.hendy.vietsubstudio",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devUrl": "http://localhost:3002",
+    "frontendDist": "../../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Hendy Vietsub WASM Studio",
+        "width": 1440,
+        "height": 900,
+        "resizable": true
+      }
+    ]
+  }
+}

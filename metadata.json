@@ -1,0 +1,6 @@
+{
+  "name": "CyberSub Edge — 7-Tier Vietsub WASM & Cloud Service Platform",
+  "description": "Unified 7-Tier Edge Architecture combining Admin Web Portal L1, Vietsub WASM Studio (SubtitlesOctopus & ASS Renderer), Telegram Bot & React 19 Mini App, Cloudflare Worker Dispatcher, Core Services (Shop Code, VietQR, VIP, Gifcode, MXH), and D1/KV/R2 Auto-Bindings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

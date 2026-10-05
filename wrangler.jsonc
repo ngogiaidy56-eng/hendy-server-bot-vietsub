@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "hendy-server-bot-vietsub-root",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB_CORE_D1",
+      "database_name": "hendy_vietsub_d1",
+      "database_id": "d1-8849201a-hendy-prod",
+      "migrations_dir": "database/d1-migrations"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "CONFIG_KV",
+      "id": "kv-config-hotreload-2026"
+    },
+    {
+      "binding": "API_KEYS_KV",
+      "id": "kv-apikeys-vault-2026"
+    },
+    {
+      "binding": "SESSION_KV",
+      "id": "kv-session-state-2026"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "MEDIA_BUCKET_R2",
+      "bucket_name": "hendy-vietsub-media-r2"
+    }
+  ]
+}

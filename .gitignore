@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+.wrangler/state/
+apps/*/dist/
+apps/vietsub-wasm-studio/src/app-packager/src-tauri/target/
+__pycache__/
+*.pyc
+

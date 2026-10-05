@@ -1,0 +1,6 @@
+{
+  "engine": "wrangler-local-miniflare-v3",
+  "d1LocalDatabase": "hendy_vietsub_d1.sqlite",
+  "kvNamespaces": ["CONFIG_KV", "API_KEYS_KV", "SESSION_KV"],
+  "r2Buckets": ["MEDIA_BUCKET_R2"]
+}

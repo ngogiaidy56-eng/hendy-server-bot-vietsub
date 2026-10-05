@@ -1,0 +1,10 @@
+{
+  "name": "@hendy/vietsub-wasm-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3002",
+    "build": "vite build"
+  }
+}

@@ -1,0 +1,41 @@
+name: DevOps Pipeline — Auto-Bindings, Secret Vault & Dual Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+jobs:
+  auto-provision-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Monorepo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install Monorepo Dependencies
+        run: npm install
+
+      - name: Step 1 — Auto-Provision D1, KV, R2 & Update wrangler.jsonc
+        run: bash scripts/auto-provision-bindings.sh
+
+      - name: Step 2 — Auto-Validate & Save Dynamic API Keys to KV
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          VIETQR_WEBHOOK_SECRET: ${{ secrets.VIETQR_WEBHOOK_SECRET }}
+          SOCIAL_MMO_API_KEY: ${{ secrets.SOCIAL_MMO_API_KEY }}
+          AES_VAULT_MASTER_KEY: ${{ secrets.AES_VAULT_MASTER_KEY }}
+        run: node scripts/validate-and-save-keys.js
+
+      - name: Step 3 — Dual Build & Deploy Matrix (Workers + Cloudflare Pages)
+        run: bash scripts/dual-deploy.sh
